@@ -173,9 +173,9 @@ smtp-amavis unix -      -       n       -       %%zimbraAmavisMaxServers%%  smtp
 #
 # PostJournal
 #
-[%%zimbraLocalBindAddress%%]:10027 inet n   n       n       -       -       spawn
-	-o smtp_send_xforward_command=yes
-	user=zimbra argv=/opt/zimbra/libexec/postjournal
+%%uncomment LOCAL:postjournal_enabled%%[%%zimbraLocalBindAddress%%]:10027 inet n   n       n       -       -       spawn
+%%uncomment LOCAL:postjournal_enabled%%	-o smtp_send_xforward_command=yes
+%%uncomment LOCAL:postjournal_enabled%%	user=zimbra argv=/opt/zimbra/libexec/postjournal
 
 [%%zimbraLocalBindAddress%%]:10028 inet n  -       n       -       -  smtpd
 %%uncomment SERVICE:opendkim%%	-o content_filter=scan:[%%zimbraLocalBindAddress%%]:10030
